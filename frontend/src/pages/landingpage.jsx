@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../index.css";
 import phoneImage from "../assets/mobile.png";
-import { color } from "chart.js/helpers";
 
 function LandingPage() {
   const navigate = useNavigate();
