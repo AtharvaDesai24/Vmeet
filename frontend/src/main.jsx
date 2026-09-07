@@ -7,7 +7,7 @@ import Auth from "./pages/authenticate";
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/home';
 import HistoryPage from './pages/historyPage';
-import VideoMeetComponent from './pages/video';
+import VideoMeetComponent from './pages/Video';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <AuthProvider>
