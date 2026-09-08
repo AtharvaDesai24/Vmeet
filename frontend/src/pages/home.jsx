@@ -62,7 +62,7 @@ function Home() {
         <TextField
           onChange={(e) => setMeetingCode(e.target.value)}
           value={meetingCode}
-          placeholder="Enter a code or link"
+          placeholder="Enter a meeting code or Generate a new meeting "
           variant="outlined"
           size="medium"
           className="meetingInput"

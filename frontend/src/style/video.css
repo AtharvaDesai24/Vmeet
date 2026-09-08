@@ -1,7 +1,12 @@
+/* ==========================================================
+   BASE / DESKTOP-LAPTOP STYLES (default, screens > 1200px)
+   ========================================================== */
+
 .meetVideoContainer {
     position: relative;
     height: 100vh;
     background: rgb(1, 4, 48);
+    overflow: hidden;
 }
 
 .meetUserVideo {
@@ -13,6 +18,7 @@
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     z-index: 5;
+    transition: right 0.2s ease;
 }
 
 .buttonContainers {
@@ -21,6 +27,8 @@
     bottom: 0;
     text-align: center;
     padding-bottom: 12px;
+    z-index: 8;
+    transition: width 0.2s ease;
 }
 
 .buttonContainers svg {
@@ -35,6 +43,8 @@
     padding: 20px;
     gap: 16px;
     height: 100%;
+    box-sizing: border-box;
+    transition: padding-right 0.2s ease;
 }
 
 .conferenceView video {
@@ -45,6 +55,7 @@
     border-radius: 14px;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
+
 .chatRoom {
     position: absolute;
     top: 0;
@@ -57,6 +68,19 @@
     display: flex;
     flex-direction: column;
     z-index: 10;
+}
+
+/* --------------------------------------------------------
+   When chat is open (.chatRoom is rendered before these
+   elements in the JSX), shrink/shift the video area so it
+   sits beside the chat panel instead of underneath it.
+   -------------------------------------------------------- */
+.chatRoom ~ .conferenceView {
+    padding-right: 340px;
+}
+
+.chatRoom ~ .buttonContainers {
+    width: calc(100vw - 340px);
 }
 
 .chatContainer {
@@ -166,4 +190,205 @@
     border-radius: 10px !important;
     white-space: nowrap;
     box-shadow: none !important;
+}
+
+
+/* ==========================================================
+   LAPTOP / SMALL DESKTOP (max-width: 1200px)
+   ========================================================== */
+@media (max-width: 1200px) {
+  .conferenceView video {
+    width: 65vw;
+    height: 65vh;
+  }
+
+  .chatRoom {
+    width: 300px;
+  }
+
+  .chatRoom ~ .conferenceView {
+    padding-right: 300px;
+  }
+
+  .chatRoom ~ .buttonContainers {
+    width: calc(100vw - 300px);
+  }
+}
+
+
+/* ==========================================================
+   TABLET (max-width: 1024px)
+   Chat still sits beside the call, just narrower.
+   ========================================================== */
+@media (max-width: 1024px) {
+  .conferenceView {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .conferenceView video {
+    width: 70vw;
+    height: 52vh;
+    max-width: none;
+  }
+
+  .meetUserVideo {
+    height: 18vh;
+    bottom: 15vh;
+    left: 14px;
+  }
+
+  .buttonContainers svg {
+    font-size: 2.3rem;
+  }
+
+  .chatRoom {
+    width: 260px;
+    max-width: 70vw;
+  }
+
+  .chatRoom ~ .conferenceView {
+    padding-right: 260px;
+  }
+
+  .chatRoom ~ .buttonContainers {
+    width: calc(100vw - 260px);
+  }
+
+  .chatContainer h1 {
+    padding: 14px 16px;
+  }
+
+  .chattingArea {
+    padding: 10px 14px;
+  }
+}
+
+
+/* ==========================================================
+   MOBILE (max-width: 600px)
+   Chat becomes a bottom sheet instead of a full overlay, so
+   video + controls stay visible above it at the same time.
+   ========================================================== */
+@media (max-width: 600px) {
+  .conferenceView {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .conferenceView video {
+    width: 92vw;
+    height: 32vh;
+    border-radius: 10px;
+  }
+
+  .meetUserVideo {
+    height: 11vh;
+    bottom: auto;
+    top: 8px;
+    right: 8px;
+    left: auto;
+    border-radius: 10px;
+  }
+
+  .buttonContainers {
+    bottom: 0;
+    padding-bottom: 6px;
+  }
+
+  .buttonContainers svg {
+    font-size: 1.6rem;
+  }
+
+  /* Chat panel docks to the bottom, leaving the top ~45% for video */
+  .chatRoom {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 55vh;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Reserve top space for video + controls while chat is open */
+  .chatRoom ~ .conferenceView {
+    padding-right: 8px;
+    max-height: calc(100vh - 55vh - 56px);
+    overflow: hidden;
+  }
+
+  .chatRoom ~ .conferenceView video {
+    height: 26vh;
+  }
+
+  .chatRoom ~ .buttonContainers {
+    width: 100vw;
+    bottom: 55vh;
+    padding-bottom: 6px;
+    background: rgba(1, 4, 48, 0.85);
+  }
+
+  .chatRoom ~ .meetUserVideo {
+    height: 9vh;
+  }
+
+  .chatContainer h1 {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+
+  .chattingDisplay {
+    padding: 10px 12px;
+  }
+
+  .chattingDisplay > div {
+    max-width: 90%;
+    padding: 8px 12px;
+  }
+
+  .chattingArea {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .chattingArea button {
+    height: 34px;
+    padding: 0 12px;
+  }
+}
+
+
+/* ==========================================================
+   EXTRA SMALL MOBILE (max-width: 380px)
+   ========================================================== */
+@media (max-width: 380px) {
+  .conferenceView video {
+    height: 26vh;
+  }
+
+  .chatRoom ~ .conferenceView video {
+    height: 20vh;
+  }
+
+  .meetUserVideo {
+    height: 9vh;
+  }
+
+  .buttonContainers svg {
+    font-size: 1.35rem;
+  }
+
+  .chatRoom {
+    height: 60vh;
+  }
+
+  .chatRoom ~ .conferenceView {
+    max-height: calc(100vh - 60vh - 52px);
+  }
+
+  .chatRoom ~ .buttonContainers {
+    bottom: 60vh;
+  }
 }

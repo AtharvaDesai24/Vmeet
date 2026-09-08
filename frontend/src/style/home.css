@@ -1,40 +1,46 @@
+/* ==========================================================
+   BASE / DESKTOP-LAPTOP STYLES (default, screens > 1024px)
+   ========================================================== */
+
 .navBar {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px silver solid;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding: 2px 5%;
 }
 
 .sidebuttons {
-    width: 220px;
+  width: 220px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   right: 2rem;
 }
-.sidebuttons button{
-    text-decoration: none;
-    color: white;
+
+.sidebuttons button {
+  text-decoration: none;
+  color: white;
 }
-p{
-    font-size: 18px;
+
+p {
+  font-size: 18px;
 }
-.navHeader{
+
+.navHeader {
   display: flex;
   align-items: center;
   gap: 0.5rem; /* Space between text and emoji */
 }
 
 .navHeader h2 {
-  font-size:3rem;
+  font-size: 3rem;
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
   margin: 0;
-   position: relative;
+  position: relative;
   left: 21px;
 }
 
@@ -101,26 +107,163 @@ p{
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
 }
 
-/* Responsive adjustment for tablets and mobile */
-@media (max-width: 868px) {
+
+/* ==========================================================
+   LAPTOP / SMALL DESKTOP (max-width: 1200px)
+   Slightly tighten the hero section on smaller laptop screens
+   ========================================================== */
+@media (max-width: 1200px) {
+  .meetContainer {
+    padding: 0 5%;
+    gap: 24px;
+  }
+
+  .heroHeading {
+    font-size: 2.1rem;
+  }
+
+  .contentWrapper {
+    max-width: 480px;
+  }
+
+  .imageWrapper {
+    max-width: 380px;
+  }
+}
+
+
+/* ==========================================================
+   TABLET (max-width: 1024px)
+   ========================================================== */
+@media (max-width: 1024px) {
+  .navBar {
+    padding: 8px 4%;
+  }
+
+  .navHeader h2 {
+    font-size: 2.2rem;
+    left: 10px;
+  }
+
+  .sidebuttons {
+    width: auto;
+    gap: 1rem;
+    right: 0;
+  }
+
   .meetContainer {
     flex-direction: column-reverse;
-    padding: 40px 24px;
+    padding: 40px 6%;
     text-align: center;
     gap: 32px;
+    min-height: auto;
+  }
+
+  .leftPanel,
+  .rightPanel {
+    width: 100%;
+    flex: none;
+  }
+
+  .contentWrapper {
+    max-width: 600px;
   }
 
   .actionGroup {
     margin: 0 auto;
     width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .heroHeading {
     font-size: 1.85rem;
   }
 
+  .imageWrapper {
+    max-width: 380px;
+  }
+
   .heroImage {
     max-height: 320px;
   }
+}
 
+
+/* ==========================================================
+   MOBILE (max-width: 600px)
+   ========================================================== */
+@media (max-width: 600px) {
+  .navBar {
+    padding: 8px 4%;
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .navHeader h2 {
+    font-size: 1.5rem;
+    left: 0;
+  }
+
+  .navHeader span {
+    font-size: 0.6rem;
+  }
+
+  .sidebuttons {
+    width: 100%;
+    justify-content: center;
+    gap: 0.75rem;
+    right: 0;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .meetContainer {
+    padding: 28px 5%;
+    gap: 24px;
+  }
+
+  .heroHeading {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .actionGroup {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .actionGroup button,
+  .actionGroup a {
+    width: 100%;
+  }
+
+  .imageWrapper {
+    max-width: 260px;
+  }
+
+  .heroImage {
+    max-height: 220px;
+  }
+}
+
+
+/* ==========================================================
+   EXTRA SMALL MOBILE (max-width: 380px)
+   ========================================================== */
+@media (max-width: 380px) {
+  .navHeader h2 {
+    font-size: 1.2rem;
+  }
+
+  .heroHeading {
+    font-size: 1.3rem;
+  }
+
+  .imageWrapper {
+    max-width: 200px;
+  }
 }
